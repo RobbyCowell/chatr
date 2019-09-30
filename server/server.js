@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const db = require('./db');
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const getConvosById = (userId) => {
     let convos = [];
