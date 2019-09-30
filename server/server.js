@@ -28,14 +28,21 @@ const sendMessage = (msgData) => {
         sentBy: msgData.sender,
         readBy: [],
         contents: msgData.msg
-    }
+    };
 
     if (convo) {
         convo.messages.push(msg);
+        notifyParticipants(convo.participants, msg);
     } else {
         throw new Error('Conversation not found');
     }
 };
+
+const notifyParticipants = (participants, msg) => {
+    for (var i = 0; i < participants.length; i++) {
+        console.log('notifying ' + participants[i] + ' with: ' + msg.contents);
+    }
+}
 
 app.get('/chats/:id', (req, res) => {
     const convos = getConvosById(req.params.id);
@@ -48,6 +55,6 @@ app.post('/send', (req, res) => {
     return res.json('OK');
 });
 
-app.listen(5000, () => 
-    console.log('Server running on port 5000')
-);
+app.listen(5000, () => {
+    console.log('Server running on port 5000');
+});
