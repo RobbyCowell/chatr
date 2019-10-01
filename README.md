@@ -1,6 +1,8 @@
 # chatr
 A simple chat application that supports multiple conversations.
 
+![Alt text](/docs/app-screenshot.png?raw=true "Chatr")
+
 ## Running locally
 Clone this repo and then Run `npm start` from both the `/server` and `/app` directories.
 
