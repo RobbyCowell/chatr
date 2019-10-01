@@ -1,3 +1,35 @@
-.message.message--sent {
-    color: blue;
+.message {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+
+.message--sent {
+    display: flex;
+    flex-flow: row-reverse;
+}
+
+.message--received {
+    display: flex;
+}
+
+.message--received p {
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px 4px rgba(111, 111, 111, 0.2);
+}
+
+.message--sent p {
+    background-color: #F67280;
+    padding: 1rem;
+    border-radius: 10px;
+    color: white;
+}
+
+.conversation__title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #F67280;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import './conversation-listing.css';
 
 export default class ConversationListing extends React.Component {
     constructor(props) {
@@ -28,12 +29,11 @@ export default class ConversationListing extends React.Component {
         let lastMessage =  this.state.messages[this.state.messages.length - 1]
         return (
             <div 
-                className="conversation-listing" 
-                style={{border: '1px solid grey'}}
+                className="conversation-listing"
                 onClick={()=>this.props.onClick(this.props.conversation.id)}
             >
-                <h4>{this.state.participants}</h4>
-                <p>{lastMessage.contents}</p>
+                <h4 className="conversation-listing__participants">{this.state.participants}</h4>
+                <p className="conversation-listing__last-msg">{lastMessage.contents}</p>
             </div>
         )
     }

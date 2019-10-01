@@ -53,8 +53,8 @@ export default class Conversation extends React.Component {
     
     render() {
         return (
-            <div className="conversation col">
-                <h3>Chat with {this.filterParticipants()}</h3>
+            <div className="conversation col offset-md-1">
+                <h3 className="conversation__title">{this.filterParticipants()}</h3>
                 <div className="messageList">
                     {this.props.conversation.messages.map(message => (
                         <div 
