@@ -9,6 +9,12 @@
     font-weight: 400;
 }
 
+.messageList {
+    height: 55vh;
+    padding: 1rem;
+    overflow-y: scroll;
+}
+
 .message--sent {
     display: flex;
     flex-flow: row-reverse;
