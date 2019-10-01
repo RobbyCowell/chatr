@@ -6,7 +6,8 @@ export default class Conversation extends React.Component {
         super(props);
         this.state = {
             msg: null,
-            user: this.props.user
+            user: this.props.user,
+            messages: this.props.conversation.messages
         }
     }
 
@@ -36,8 +37,7 @@ export default class Conversation extends React.Component {
             body: JSON.stringify(body)
         })
         .then((data) => {
-            //TODO: update current list
-            console.log(data);
+            this.props.update();
         })
     }
 

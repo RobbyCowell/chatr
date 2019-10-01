@@ -18,6 +18,10 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        this.getConversationData();
+    }
+
+    getConversationData = () => {
         fetch('http://localhost:5000/chats/' + this.state.user.name)
         .then(res => res.json())
         .then((result) => {
@@ -68,6 +72,7 @@ class App extends React.Component {
                         <Conversation 
                             conversation={this.state.selectedConversation} 
                             user={this.state.user.name}
+                            update={this.getConversationData}
                         />
                     </div>
                 </div>

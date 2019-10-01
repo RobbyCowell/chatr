@@ -51,7 +51,6 @@ app.get('/chats/:id', (req, res) => {
     return res.json(convos);
 });
 
-//curl -i -X POST -H 'Content-Type: application/json' -d '{"sender": "robby", "msg": "test message", "id": "xyz"}' http://localhost:5000/send
 app.post('/send', (req, res) => {
     sendMessage(req.body);
     return res.json('OK');
