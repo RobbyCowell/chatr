@@ -10,9 +10,10 @@ class App extends React.Component {
             isLoaded: false,
             error: null,
             user: {
-                name: 'robby',
+                name: 'Robby Cowell',
                 conversations: null
-            }
+            },
+            selectedConversation: null
         };
     }
 
@@ -25,7 +26,8 @@ class App extends React.Component {
                 user: {
                     ...prevState.user,
                     conversations: result
-                }
+                },
+                selectedConversation: result[0]
             }));
         },
         (error) => {
@@ -34,6 +36,16 @@ class App extends React.Component {
                 isLoaded: true,
                 error: error
             });
+        })
+    }
+
+    switchConversation = (id) => {
+        let selectedConversation = this.state.user.conversations.filter(convo => {
+            return convo.id === id
+        })
+
+        this.setState({
+            selectedConversation: selectedConversation[0]
         });
     }
     
@@ -46,9 +58,18 @@ class App extends React.Component {
             return <p>Loading...</p>
         } else {
             return (
-                <div className="appContainer">
-                    <ConversationList conversations={this.state.user.conversations}/>
-                    {/* TODO: render Conversation component here */}
+                <div className="appContainer container">
+                    <div className="row">
+                        <ConversationList
+                            conversations={this.state.user.conversations}
+                            user={this.state.user.name}
+                            onClick={this.switchConversation}
+                        />
+                        <Conversation 
+                            conversation={this.state.selectedConversation} 
+                            user={this.state.user.name}
+                        />
+                    </div>
                 </div>
             );
         }

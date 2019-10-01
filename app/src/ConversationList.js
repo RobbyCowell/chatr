@@ -1,20 +1,25 @@
 import React from 'react';
+import ConversationListing from './ConversationListing';
 
-export default class ConversationList extends React.Component {
+export default class ConversationList extends React.Component {    
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: this.props.user,
+            conversations: this.props.conversations
+        }
+    }
+    
     render() {
-        /*
-        * remove current user from props so it doesn't show you're in a conversation with yourself
-        * if particpants.length > 2
-        *  save number of particpants so it says, 'conversation with {name} and {no} others'
-        * else just show other particpant
-        */
-
         return (
-            <div className="conversation-list">
+            <div className="conversation-list col-3">
+                <h3>Chats</h3>
                 {this.props.conversations.map(conversation => (
-                    <div key={conversation.id}>
-                        <p>Conversation with {conversation.participants[0]}</p>
-                    </div>
+                    <ConversationListing 
+                        key={conversation.id}
+                        conversation={conversation}
+                        user={this.state.user}
+                        onClick={this.props.onClick} />
                 ))}
             </div>
         )
