@@ -68,8 +68,8 @@ export default class Conversation extends React.Component {
                     ))}
                 </div>
                 <div className="actionCentre">
-                    <input type="text" onChange={this.handleMsgChange} />
-                    <button onClick={this.sendMsg}>Send</button>
+                    <input className="actionCentre__txt-box" type="text" onChange={this.handleMsgChange} />
+                    <button className="actionCentre__send" onClick={this.sendMsg}>Send</button>
                 </div>
             </div>
         );
