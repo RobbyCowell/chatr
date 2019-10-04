@@ -72,7 +72,7 @@ class App extends React.Component {
                         <Conversation 
                             conversation={this.state.selectedConversation} 
                             user={this.state.user.name}
-                            update={this.getConversationData}
+                            updateMessages={this.getConversationData}
                         />
                     </div>
                 </div>

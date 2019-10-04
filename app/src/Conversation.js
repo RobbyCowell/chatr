@@ -1,18 +1,13 @@
 import React from 'react';
 import './conversation.css';
+import { filterParticipant } from './Utils';
 
 export default class Conversation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             msg: null,
-            user: this.props.user,
-            messages: this.props.conversation.messages
         }
-    }
-
-    componentDidMount() {
-        this.setState({participants: this.filterParticipants()})
     }
     
     handleMsgChange = (e) => {
@@ -36,31 +31,28 @@ export default class Conversation extends React.Component {
             },
             body: JSON.stringify(body)
         })
-        .then((data) => {
-            this.props.update();
+        .then(() => {
+            this.props.updateMessages();
         })
     }
 
-    filterParticipants = () => {
-        let filtered = this.props.conversation.participants;
-        const index = filtered.indexOf(this.state.user);
-        if (index !== -1) {
-            filtered.splice(index, 1);
-        }
-
-        return filtered;
-    }
     
     render() {
+        const participantsToDisplay = 
+            filterParticipant(
+                this.props.conversation.participants, 
+                this.props.user);
         return (
             <div className="conversation col offset-md-1">
-                <h3 className="conversation__title">{this.filterParticipants()}</h3>
+                <h3 className="conversation__title">{participantsToDisplay}</h3>
                 <div className="messageList">
                     {this.props.conversation.messages.map(message => (
                         <div 
                             className= {
                                 "message " + 
-                                (message.sentBy === this.props.user ? 'message--sent': 'message--received')
+                                (message.sentBy === this.props.user ?
+                                    'message--sent':
+                                    'message--received')
                             }
                             key={message.timeSent}>
                             <p>{message.contents}</p>
@@ -68,8 +60,15 @@ export default class Conversation extends React.Component {
                     ))}
                 </div>
                 <div className="actionCentre">
-                    <input className="actionCentre__txt-box" type="text" onChange={this.handleMsgChange} />
-                    <button className="actionCentre__send" onClick={this.sendMsg}>Send</button>
+                    <input 
+                        className="actionCentre__txt-box"
+                        type="text" 
+                        onChange={this.handleMsgChange} />
+                    <button 
+                        className="actionCentre__send" 
+                        onClick={this.sendMsg}>
+                        Send
+                    </button>
                 </div>
             </div>
         );
