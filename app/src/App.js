@@ -73,6 +73,7 @@ class App extends React.Component {
                 <div className="appContainer container">
                     <div className="row">
                         <ConversationList
+                            selected={this.state.selectedConversation.id}
                             conversations={this.state.user.conversations}
                             user={this.state.user.name}
                             onClick={this.switchConversation}

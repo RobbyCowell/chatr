@@ -10,9 +10,10 @@ export default class ConversationListing extends React.Component {
                 this.props.conversation.participants, 
                 this.props.user);
         const lastMessage = messages[messages.length - 1];
+        const selected = (this.props.conversation.id === this.props.selected);
         return (
-            <div 
-                className="conversation-listing"
+            <div
+                className={"conversation-listing " + (selected ? 'conversation-listing--selected': '') }
                 onClick={()=>this.props.onClick(this.props.conversation.id)}
             >
                 <h4 className="conversation-listing__participants">{participantsToDisplay}</h4>

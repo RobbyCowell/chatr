@@ -42,6 +42,7 @@ export default class Conversation extends React.Component {
             filterParticipant(
                 this.props.conversation.participants, 
                 this.props.user);
+
         return (
             <div className="conversation col offset-md-1">
                 <h3 className="conversation__title">{participantsToDisplay}</h3>
