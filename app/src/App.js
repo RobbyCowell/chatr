@@ -30,9 +30,17 @@ class App extends React.Component {
                 user: {
                     ...prevState.user,
                     conversations: result
-                },
-                selectedConversation: result[0]
+                }
             }));
+
+            if (!this.state.selectedConversation) {
+                this.setState({selectedConversation: result[0]});
+            } else {
+                let updatedConvo = result.filter(convo => {
+                    return convo.id === this.state.selectedConversation.id;
+                });
+                this.setState({selectedConversation: updatedConvo[0]});
+            }
         },
         (error) => {
             console.dir(error);
@@ -58,7 +66,7 @@ class App extends React.Component {
             return (
                 <div>{this.state.error.message}</div>
             )
-        } else if (!this.state.isLoaded) {
+        } else if (!this.state.isLoaded || !this.state.selectedConversation) {
             return <p>Loading...</p>
         } else {
             return (
