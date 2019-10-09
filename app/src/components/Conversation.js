@@ -1,6 +1,7 @@
 import React from 'react';
 import './conversation.css';
-import { filterParticipant } from './Utils';
+import ConversationBar from './ConversationBar';
+import { filterParticipant } from './../Utils';
 
 export default class Conversation extends React.Component {
     constructor(props) {
@@ -49,7 +50,7 @@ export default class Conversation extends React.Component {
                 <div className="messageList">
                     {this.props.conversation.messages.map(message => (
                         <div 
-                            className= {
+                            className={
                                 "message " + 
                                 (message.sentBy === this.props.user ?
                                     'message--sent':
@@ -60,7 +61,11 @@ export default class Conversation extends React.Component {
                         </div>
                     ))}
                 </div>
-                <div className="actionCentre">
+                <ConversationBar 
+                    onChange={this.handleMsgChange}
+                    onClick={this.sendMsg}
+                />
+                {/* <div className="actionCentre">
                     <input 
                         className="actionCentre__txt-box"
                         type="text" 
@@ -70,7 +75,7 @@ export default class Conversation extends React.Component {
                         onClick={this.sendMsg}>
                         Send
                     </button>
-                </div>
+                </div> */}
             </div>
         );
     }

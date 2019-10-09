@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ConversationList from './ConversationList';
-import Conversation from './Conversation';
+import ConversationList from './components/ConversationList';
+import Conversation from './components/Conversation';
 
 class App extends React.Component {
     constructor(props) {

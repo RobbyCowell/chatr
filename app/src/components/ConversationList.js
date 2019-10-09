@@ -14,7 +14,8 @@ export default class ConversationList extends React.Component {
                         key={conversation.id}
                         conversation={conversation}
                         user={this.props.user}
-                        onClick={this.props.onClick} />
+                        onClick={this.props.onClick}
+                    />
                 ))}
             </div>
         )

@@ -1,6 +1,6 @@
 import React from 'react';
 import './conversation-listing.css';
-import { filterParticipant } from './Utils';
+import { filterParticipant } from '../Utils';
 
 export default class ConversationListing extends React.Component {
     render() {
@@ -13,7 +13,7 @@ export default class ConversationListing extends React.Component {
         const selected = (this.props.conversation.id === this.props.selected);
         return (
             <div
-                className={"conversation-listing " + (selected ? 'conversation-listing--selected': '') }
+                className={"conversation-listing " + (selected ? 'conversation-listing--selected': '')}
                 onClick={()=>this.props.onClick(this.props.conversation.id)}
             >
                 <h4 className="conversation-listing__participants">{participantsToDisplay}</h4>
