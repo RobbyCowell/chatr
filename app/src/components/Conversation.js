@@ -65,17 +65,6 @@ export default class Conversation extends React.Component {
                     onChange={this.handleMsgChange}
                     onClick={this.sendMsg}
                 />
-                {/* <div className="actionCentre">
-                    <input 
-                        className="actionCentre__txt-box"
-                        type="text" 
-                        onChange={this.handleMsgChange} />
-                    <button 
-                        className="actionCentre__send" 
-                        onClick={this.sendMsg}>
-                        Send
-                    </button>
-                </div> */}
             </div>
         );
     }
