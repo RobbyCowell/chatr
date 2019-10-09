@@ -27,4 +27,5 @@
 .conversation-bar__txt-box:focus,
 .conversation-bar__send:focus  {
     outline: none;
+    box-shadow: 3px 3px 10px 4px rgba(246, 114, 128, 0.2);
 }

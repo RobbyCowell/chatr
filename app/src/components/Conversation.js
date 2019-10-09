@@ -18,6 +18,10 @@ export default class Conversation extends React.Component {
     }
 
     sendMsg = () => {
+        if (!this.state.msg) {
+            return;
+        }
+
         const body = {
             sender: this.props.user,
             msg: this.state.msg,

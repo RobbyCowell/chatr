@@ -14,7 +14,6 @@
 }
 
 .conversation-listing--selected {
-    /* border: 1px solid #F67280; */
     box-shadow: 3px 3px 10px 4px rgba(246, 114, 128, 0.2);
 }
 
